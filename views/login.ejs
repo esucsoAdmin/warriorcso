@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Including Top Headers -->
+  <% include ../views/partials/topHeaders.ejs %>
+</head>
+
+<body>
+  <!-- import the navbar -->
+  <% include ../views/partials/topNav.ejs %>
+
+  <!-- end of nav bar -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <form method="post">
+          <div class="form-group">
+            <label for="exampleinputemail1">Username</label>
+            <input type="text" class="form-control" id="user" placeholder="username">
+          </div>
+          <div class="form-group">
+            <label for="exampleinputpassword1">Password</label>
+            <input type="password" class="form-control" id="pass" placeholder="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p id="centerheader">dont have an account? <a href="/register">register here!</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Including Footer -->
+  <% include ../views/partials/footer.ejs %>
+
+  <!-- Including bottom headers -->
+  <% include ../views/partials/botHeaders.ejs %>
+</body>
+
+</html>

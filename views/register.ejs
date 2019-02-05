@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Including Top Headers -->
+  <% include ../views/partials/topHeaders.ejs %>
+</head>
+
+<body>
+    <!-- Including topNav -->
+    <% include ../views/partials/topNav.ejs %>
+
+    <!-- Main Content Container -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <form method="post">
+          <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" id="user" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="pass" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" class="form-control" id="confPass" placeholder="Confirm Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Including Footer -->
+  <% include ../views/partials/botHeaders.ejs %>
+
+  <!-- Including bottom headers -->
+  <% include ../views/partials/botHeaders.ejs %>
+</body>
+
+</html>
