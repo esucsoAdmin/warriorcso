@@ -1,7 +1,11 @@
 {
   "name": "github",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./bin/server",
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.5.0"
+  },
   "scripts": {
     "server": "nodemon ./bin/server",
     "start": "node ./bin/server"
