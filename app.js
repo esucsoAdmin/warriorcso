@@ -12,6 +12,7 @@ const registerRouter = require('./routes/register');
 const aboutRouter = require('./routes/about');
 const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
+const memberRouter = require('./routes/members')
 
 // Set html framework
 app.set('view engine', 'ejs');
@@ -31,5 +32,6 @@ app.use('/register', registerRouter);
 app.use('/about', aboutRouter);
 app.use('/projects', projectsRouter);
 app.use('/rent', rentRouter);
+app.use('/members', memberRouter);
 
 module.exports = app;

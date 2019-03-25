@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Including Top Headers -->
+    <% include ../views/partials/topHeaders.ejs %>
+</head>
+
+<body>
+    <!-- Including topNav -->
+    <% include ../views/partials/topNav.ejs %>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <form method="post">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control" id="user" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="pass" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input type="password" class="form-control" id="confPass" placeholder="Confirm Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                <div class="col">
+                        <label for="exampleInputPassword1">Year</label>
+                        <select id="year" class="form-control">
+                                <option>Freshman</option>
+                                <option>Sophomore</option>
+                                <option>Junior</option>
+                                <option>Senior</option>
+                                <option>Grad Student</option>
+                        </select>
+                        <label for="exampleInputPassword1">Area of Study</label>
+                        <select id="year" class="form-control">
+                                <option>Web Dev</option>
+                                <option>Robotics</option>
+                                <option>Security</option>
+                                <option>Networking</option>
+                                <option>Not Sure</option>
+                        </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Including Footer -->
+    <% include ../views/partials/botHeaders.ejs %>
+
+    <!-- Including bottom headers -->
+    <% include ../views/partials/botHeaders.ejs %>
+</body>
+
+</html>
