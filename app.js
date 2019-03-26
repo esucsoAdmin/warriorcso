@@ -14,6 +14,15 @@ const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
 const memberRouter = require('./routes/members')
 
+//mongodb import and url
+const mongo = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017';
+
+mongo.connect(url, (err,client) => {
+  if(err){
+    console.log(err);
+  }
+});
 // Set html framework
 app.set('view engine', 'ejs');
 
