@@ -1,8 +1,18 @@
 /*Used for the navbar generation*/
 #navbarMain, #navbarName, #navbarName:hover, #navSelector .active a{
-  background-color: #D50032;
+  background-color: #000;
 }
 
+.navbar-toggler-icon{
+  background-color: rgb(84, 212, 34);
+}
+#projects, #about, #index, #rent{
+  color: rgb(84, 212, 34);
+}
+
+#projects:hover, #about:hover, #index:hover, #rent:hover{
+  color: rgb(255, 255, 255);
+}
 /*End navabr Generation*/
 
 /*Used for the captions in the center of the carousel*/
@@ -43,11 +53,21 @@
 }
 
 #eventTitle{
-  color: #D50032; 
+  color: rgb(84, 212, 34); 
   text-shadow: -1px 0 	#F0EAD6, 0 1px 	#F0EAD6, 1px 0 	#F0EAD6, 0 -1px 	#F0EAD6;}
 /*End Event Cards*/
 
+#centerHeader{
+  color: black;
+  text-align: center;
+}
+
+#carouselHeader{
+  color: rgb(29, 29, 99);
+  font-size: 64px;
+}
+
 /*Global body properties*/
 body{
-  background-color: #F0EAD6;
+  background-color: grey;
 }
