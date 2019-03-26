@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req,res) => {
 
-  console.log(req.body);
+  console.log(req.body.firstName);
 
   res.render('members.ejs', {title : "Who goes there!? esq."});
 });
