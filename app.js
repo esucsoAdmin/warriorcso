@@ -1,6 +1,8 @@
 /* jshint esversion: 6 */
 const express = require('express');
-
+const sessions = require('express-session');
+const mongo = require('mongoose');
+const MongoStore = require('connect-mongo')(sessions);
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -15,14 +17,20 @@ const rentRouter = require('./routes/rent');
 const memberRouter = require('./routes/members')
 
 //mongodb import and url
-const mongo = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
+//mongo connect
+mongo.connect(url);
+//init session framework
+app.use(sessions({
+  secret: 'neutron22',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: mongo.connection,
+    collection: 'session',
+  })
+}));
 
-mongo.connect(url, (err,client) => {
-  if(err){
-    console.log(err);
-  }
-});
 // Set html framework
 app.set('view engine', 'ejs');
 
