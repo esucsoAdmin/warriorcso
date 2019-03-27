@@ -6,7 +6,7 @@ const MongoStore = require('connect-mongo')(sessions);
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const db = require('./bin/mongodb').MONGO_MAIN;
 // Linking to routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
@@ -16,10 +16,11 @@ const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
 const memberRouter = require('./routes/members')
 
-//mongodb import and url
-const url = 'mongodb://localhost:27017';
 //mongo connect
-mongo.connect(url);
+mongo.connect(db, { useNewUrlParser: true })
+.then(() => { console.log('MongoDB connected.'); })
+.catch(err => { console.log(`MongoDB connection error: \n${err}`);
+});
 //init session framework
 app.use(sessions({
   secret: 'neutron22',

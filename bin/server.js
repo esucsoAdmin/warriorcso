@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const debug = require('debug')('warrriorcso.com:server');
+const debug = require('debug');
 const http = require('http');
 const app = require('../app');
 
