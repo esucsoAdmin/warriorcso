@@ -14,7 +14,7 @@ const registerRouter = require('./routes/register');
 const aboutRouter = require('./routes/about');
 const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
-const memberRouter = require('./routes/members')
+const memberRouter = require('./routes/members');
 
 //mongo connect
 mongo.connect(db, { useNewUrlParser: true })
