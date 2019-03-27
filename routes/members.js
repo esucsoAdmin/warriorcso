@@ -5,12 +5,12 @@ const bcrypt = require('bcryptjs');
 
 /* @desc GET / page. */
 router.get('/', (req, res) => {
-  res.render('members.ejs', {title : 'Who goes there!?'});
+  res.render('members.ejs', {title : 'Who goes there!?', error: ''});
 });
 
 router.post('/', (req,res) => {
   if(req.body.pass !== req.body.confPass){
-    res.render("members.ejs", {title: "Who goes there!?", error: "Passwords do not match!"});
+    res.render("members.ejs", {title: "Who goes there!?", error: 'Passwords do not match!'});
   }
   //check if body is filled in with required fields
   else if(req.body.firstName &&
@@ -26,7 +26,7 @@ router.post('/', (req,res) => {
       User.findOne({userName : req.body.user}).exec(function(err,user){
         //if there is a user with the same username
         if(user){
-          res.render("members.ejs", {title: "Who goes there!?", error: "Username is already taken!"});
+          res.render("members.ejs", {title: 'Who goes there!?', error: 'Username is already taken!'});
         }else{
           var userData = {
             userName: req.body.user,

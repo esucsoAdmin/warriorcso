@@ -67,6 +67,10 @@
   font-size: 64px;
 }
 
+.error{
+  color: red;
+  font-weight: bold;
+}
 /*Global body properties*/
 body{
   background-color: grey;
