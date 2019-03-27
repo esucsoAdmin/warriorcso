@@ -7,6 +7,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('./bin/mongodb').MONGO_MAIN;
+const reload = require('reload');
+
 // Linking to routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
@@ -51,5 +53,7 @@ app.use('/about', aboutRouter);
 app.use('/projects', projectsRouter);
 app.use('/rent', rentRouter);
 app.use('/members', memberRouter);
+
+reload(app);
 
 module.exports = app;
