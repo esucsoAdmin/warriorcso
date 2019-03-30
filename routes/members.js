@@ -5,51 +5,54 @@ const bcrypt = require('bcryptjs');
 
 /* @desc GET / page. */
 router.get('/', (req, res) => {
-  res.render('members.ejs', {title : 'Who goes there!?', error: ''});
+  res.render('members.ejs', { title: 'Who goes there!?', error: '' });
 });
 
-router.post('/', (req,res) => {
-  if(req.body.pass !== req.body.confPass){
-    res.render('members.ejs', {title: 'Who goes there!?', error: 'Passwords do not match!'});
+router.post('/', (req, res) => {
+  if (req.body.pass !== req.body.confPass) {
+    res.render('members.ejs', { title: 'Who goes there!?', error: 'Passwords do not match!' });
   }
   //check if body is filled in with required fields
-  else if(req.body.firstName &&
+  else if (req.body.firstName &&
     req.body.lastName &&
     req.body.email &&
     req.body.user &&
     req.body.pass &&
-    req.body.confPass){
-      var h;
-      bcrypt.hash(req.body.pass, 10, function(err,hash){
-        h = hash;
-      });
-      User.findOne({userName : req.body.user}).exec(function(err,user){
-        //if there is a user with the same username
-        if(user){
-          res.render('members.ejs', {title: 'Who goes there!?', error: 'Username is already taken!'});
-        }else{
-          var userData = {
-            userName: req.body.user,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: hash,
-            year: req.body.year,
-            aos: req.body.aos,
-          }
-          User.create(userData, function(error, user){
-            if(error){
-              res.render('members.ejs', {title: 'Who goes there!?', error: error});
-            } else{
-              
-            }
-          });
+    req.body.confPass) {
+    flag = false;
+    User.findOne({ userName: req.body.user }).exec(function (err, user) {
+      //if there is a user with the same username or an error occurs
+      if (err || user) {
+        console.log("Found Match!");
+        flag = true;
+      }
+    });
+    console.log(flag);
+    if (flag) {
+      res.render('members.ejs', { title: 'Who goes there!?', error: 'Username is already taken!' });
+    } else {
+      //hash and store into database
+      bcrypt.hash(req.body.pass, 10, (err, hash) => {
+        var userData = {
+          userName: req.body.user,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          password: hash,
+          year: req.body.year,
+          aos: req.body.aos,
         }
+        User.create(userData, function (error, user) {
+          if (error) {
+            res.render('members.ejs', { title: 'Who goes there!?', error: error });
+          } else {
+            res.redirect('/');
+          }
+        });
       });
-    } else{
-      res.render('members.ejs', {title: 'Who goes there!?', error: 'Form is Incomplete!'});
     }
-
-  res.render('members.ejs', {title : 'Who goes there!? esq.'});
+  } else {
+    res.render('members.ejs', { title: 'Who goes there!?', error: "Incomplete Form!" });
+  }
 });
 module.exports = router;
