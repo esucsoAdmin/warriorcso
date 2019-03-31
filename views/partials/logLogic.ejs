@@ -1,0 +1,15 @@
+<!-- Include special script for cookie-->
+<script>
+    var log = <%=isLoggedOn%>;
+    if (log) {
+        var node = document.getElementById("loginlogout");
+        var text = document.createTextNode("Log Out");
+        node.setAttribute('href', '/logout');
+        node.appendChild(text);
+    } else {
+        var node = document.getElementById("loginlogout");
+        var text = document.createTextNode("Login");
+        node.setAttribute('href', '/login');
+        node.appendChild(text);
+    }
+</script>

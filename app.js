@@ -17,6 +17,7 @@ const aboutRouter = require('./routes/about');
 const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
 const memberRouter = require('./routes/members');
+const logoutRouter = require('./routes/logout');
 
 //mongo connect
 mongo.connect(db, { useNewUrlParser: true })
@@ -25,12 +26,13 @@ mongo.connect(db, { useNewUrlParser: true })
 });
 //init session framework
 app.use(sessions({
+  key: 'user_sid',
   secret: 'neutron22',
-  resave: true,
+  resave: false,
   saveUninitialized: false,
   store: new MongoStore({
     mongooseConnection: mongo.connection,
-    collection: 'session',
+    collection: 'session'
   })
 }));
 
@@ -53,6 +55,7 @@ app.use('/about', aboutRouter);
 app.use('/projects', projectsRouter);
 app.use('/rent', rentRouter);
 app.use('/members', memberRouter);
+app.use('/logout', logoutRouter);
 
 reload(app);
 

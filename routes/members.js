@@ -35,11 +35,14 @@ router.post('/', (req, res) => {
             password: hash,
             year: req.body.year,
             aos: req.body.aos,
+            admin: false
           }
           User.create(userData, function (error, user) {
             if (error) {
               res.render('members.ejs', { title: 'Who goes there!?', error: error });
             } else {
+              //create session and got to index page
+              req.session.user = user._id;
               res.redirect('/');
             }
           });
