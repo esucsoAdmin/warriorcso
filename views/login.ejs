@@ -2,40 +2,38 @@
 <html lang="en">
 
 <head>
-  <!-- Including Top Headers -->
-  <% include ../views/partials/topHeaders.ejs %>
+    <!-- Including Top Headers -->
+    <% include ../views/partials/topHeaders.ejs %>
 </head>
 
 <body>
-  <!-- import the navbar -->
-  <% include ../views/partials/topNav.ejs %>
+    <!-- Including topNav -->
+    <% include ../views/partials/topNav.ejs %>
 
-  <!-- end of nav bar -->
-  <p class="error"><%=error%></p>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <form method="post">
-          <div class="form-group">
-            <label for="exampleinputemail1">Username</label>
-            <input type="text" class="form-control" id="user" placeholder="username">
-          </div>
-          <div class="form-group">
-            <label for="exampleinputpassword1">Password</label>
-            <input type="password" class="form-control" id="pass" placeholder="password">
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+    <!-- Main Content Container -->
+    <div class="container">
+        <p class="error"><%=error%></p>
+        <form method="post" action="/login">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control" name="user" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" name="pass" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
         </form>
-        <p id="centerheader">dont have an account? <a href="/members">register here!</a></p>
-      </div>
     </div>
-  </div>
+    <!-- Including Footer -->
+    <% include ../views/partials/botHeaders.ejs %>
 
-  <!-- Including Footer -->
-  <% include ../views/partials/footer.ejs %>
-
-  <!-- Including bottom headers -->
-  <% include ../views/partials/botHeaders.ejs %>
+    <!-- Including bottom headers -->
+    <% include ../views/partials/botHeaders.ejs %>
 </body>
 
 </html>

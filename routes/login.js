@@ -25,9 +25,9 @@ router.post('/', (req, res) => {
       //if username found
       if (user) {
         //compare password hash to entered text
-        bcrypt.compare(req.body.pass, user.user, function (err, res) {
+        bcrypt.compare(req.body.pass, user.password, function (err, result) {
           //if good password match
-          if (res) {
+          if (result) {
             //init session and redirect back to home page
             req.session.user = user._id;
             res.redirect('/');
@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
       } else if (err) {
         console.log(err);
       } else {
-        console.log("something terribly wrong happened!!");
+        res.render('login.ejs', { title: 'Who goes there!?', error: 'Wrong username or password!' });
       }
     });
     //if some fields were empty
