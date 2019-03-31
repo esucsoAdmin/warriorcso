@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   if (req.session.user != null) {
     res.redirect('/');
   } else {
-    res.render('login.ejs', { title: 'Who goes there!?', error: '' });
+    res.render('login.ejs', { title: 'Login', error: '' });
   }
 });
 
@@ -34,18 +34,18 @@ router.post('/', (req, res) => {
           } else if (err) {
             console.log(err);
           } else {
-            res.render('login.ejs', { title: 'Who goes there!?', error: 'Wrong username or password!' });
+            res.render('login.ejs', { title: 'Login', error: 'Wrong username or password!' });
           }
         });
       } else if (err) {
         console.log(err);
       } else {
-        res.render('login.ejs', { title: 'Who goes there!?', error: 'Wrong username or password!' });
+        res.render('login.ejs', { title: 'Login', error: 'Wrong username or password!' });
       }
     });
     //if some fields were empty
   } else {
-    res.render('login.ejs', { title: 'Who goes there!?', error: 'Incomplete form!' });
+    res.render('login.ejs', { title: 'Login', error: 'Incomplete form!' });
   }
 });
 
