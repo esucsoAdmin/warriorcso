@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/Member');
 const bcrypt = require('bcryptjs');
+var flag = false;
 
 /* @desc GET / page. */
 router.get('/', (req, res) => {
@@ -19,38 +20,32 @@ router.post('/', (req, res) => {
     req.body.user &&
     req.body.pass &&
     req.body.confPass) {
-    flag = false;
     User.findOne({ userName: req.body.user }).exec(function (err, user) {
       //if there is a user with the same username or an error occurs
       if (err || user) {
-        console.log("Found Match!");
-        flag = true;
+        res.render('members.ejs', { title: 'Who goes there!?', error: 'Username is already taken!' });
+      } else {
+        //encrypt the password before placing into list
+        bcrypt.hash(req.body.pass, 10, (err, hash) => {
+          var userData = {
+            userName: req.body.user,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: hash,
+            year: req.body.year,
+            aos: req.body.aos,
+          }
+          User.create(userData, function (error, user) {
+            if (error) {
+              res.render('members.ejs', { title: 'Who goes there!?', error: error });
+            } else {
+              res.redirect('/');
+            }
+          });
+        });
       }
     });
-    console.log(flag);
-    if (flag) {
-      res.render('members.ejs', { title: 'Who goes there!?', error: 'Username is already taken!' });
-    } else {
-      //hash and store into database
-      bcrypt.hash(req.body.pass, 10, (err, hash) => {
-        var userData = {
-          userName: req.body.user,
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          email: req.body.email,
-          password: hash,
-          year: req.body.year,
-          aos: req.body.aos,
-        }
-        User.create(userData, function (error, user) {
-          if (error) {
-            res.render('members.ejs', { title: 'Who goes there!?', error: error });
-          } else {
-            res.redirect('/');
-          }
-        });
-      });
-    }
   } else {
     res.render('members.ejs', { title: 'Who goes there!?', error: "Incomplete Form!" });
   }
