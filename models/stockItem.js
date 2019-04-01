@@ -26,8 +26,8 @@ const ItemSchema = new Schema({
   description: {
     type: Number,
     required: false
-  },
+  }
 
 });
 
-module.exports = Item = mongoose.model('stockItem', ItemSchema)
+module.exports = Item = mongoose.model('stockItem', ItemSchema);
