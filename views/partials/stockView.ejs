@@ -1,6 +1,6 @@
   <!-- Stock Section Begins -->
-<div class="jumbotron">
-  <!-- TODO: Add Pagination  -->
+  <div class="jumbotron">
+    <!-- TODO: Add Pagination  -->
     <!-- <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
@@ -17,14 +17,18 @@
   </ul>
 </nav>
 -->
-<div class="row">
-      <div class="container" >
-        <form> 
-          <button type="submit" for="/stock/allItems" class="btn btn-secondary">Show All Items</button>
-        </form> 
+    <div class="row">
+      <div class="container-fluid">
+        <div class="form-group">
+          <form action="viewItem">
+            <button type="submit" for="/stock/allItems"
+              class="btn btn-secondary">Show All Items</button>
+          </form>
+        </div>
+
       </div>
 
       <div class="col header">Stock Items
       </div>
     </div>
-</div>
+  </div>

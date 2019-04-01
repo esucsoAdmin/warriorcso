@@ -18,7 +18,7 @@ const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
 const memberRouter = require('./routes/members');
 const logoutRouter = require('./routes/logout');
-const stockRouter = require('./routes/stockManager');
+const stockRouter = require('./routes/stock');
 
 //mongo connect
 mongo.connect(db, { useNewUrlParser: true })
