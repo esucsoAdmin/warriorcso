@@ -8,10 +8,24 @@
 <body>
   <!-- IMPORT THE NAVBAR -->
   <% include ../views/partials/topNav.ejs %>
-  <!-- END OF NAV BAR -->
-
-  <h1 id="centerHeader" class="text-center">ABOUT PAGE</h1>
-
+  <!--IMPORT THE LOG LOGIC-->
+  <% include ../views/partials/logLogic.ejs %>
+  <h1 id="centerHeader" class="text-center">Computer Science Organization</h1>
+  <br>
+  <div class="row">
+    <div class="col">
+      <h2 id="centerHeader">About</h2>
+      <p class="ptext">Welcome to the Computer Science Organization. The CSO is an on campus organizaition that focuses on extracurricular projects and 
+        overall insight to the computer science and security majors. Our goal is to learn about new technologies and develop high demand and 
+        interesting projects. Historically, we have had success in completing some projects ranging from the frameworks of a weather station 
+        to robotics to full stack web development. Each semester, our eboard and any interested members get together and discuss what new 
+        project ideas they would like to persue upon coming back next semester, then we talk to student senate to setup a budget plan for 
+        obtining materials to complete these projets. Our philosophy revolves around being open to all members ideas and facilitating the 
+        success of their ideas. We have many positions available for members to move up into including President/VP, secretary, treasurer, 
+        and project manager.
+      </p>
+    </div>
+  </div>
   <!-- Including Footer -->
   <% include ../views/partials/botHeaders.ejs %>
 
