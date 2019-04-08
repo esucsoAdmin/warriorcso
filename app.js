@@ -51,7 +51,6 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
-app.use('/register', registerRouter);
 app.use('/about', aboutRouter);
 app.use('/projects', projectsRouter);
 app.use('/rent', rentRouter);

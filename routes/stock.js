@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 // Importing Item Model
-const stockItem = require('../models/stockItem');
+const stock = require('../models/stockItem');
 
 // Importing Stock Controller
-const viewItem = require('../controllers/stockManager').viewItem;
+const { stockList } = require('../controllers/stockManager.js');
 
 // FIXME: Make use of controller to handle all stock requests
 
@@ -19,9 +19,9 @@ router.get('/admin', (req, res, next) => {
 // @route  GET stock/viewItem
 // desc    Get an Item
 // @access Public
-router.get('/viewItem', (req, res, next) => {
-  viewItem(Item)
-  .next();
+router.get('/stockList', (req, res, next) => {
+  itemsList = []
+  stock.stockList();
 });
 
 // @route  GET stock/allItems

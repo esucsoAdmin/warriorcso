@@ -18,15 +18,29 @@
 </nav>
 -->
     <div class="row">
-      <div class="container-fluid">
+      <div class="col">
+        <div class="card bg-dark text-white">
+          <div class="card-img-overlay">
+            <h4 class="card-title">Add Item Form</h4>
+            <label class="card-text">Name</label>
+          </div>
+        </div>
+      </div>
         <div class="form-group">
-          <form action="viewItem">
-            <button type="submit" for="/stock/allItems"
+          <form action="stockList">
+            <button type="submit" for=""
               class="btn btn-secondary">Show All Items</button>
+          </form>
+          <form action="addItem">
+            <button type="submit" for=""
+              class="btn btn-secondary">Add Item</button>
+          </form>
+          <form action="removeItem">
+            <button type="submit" for=""
+              class="btn btn-secondary">Remove Item</button>
           </form>
         </div>
 
-      </div>
 
       <div class="col header">Stock Items
       </div>

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "server": "nodemon ./bin/server",
+    "test": "mocha",
     "start": "node ./bin/server"
   },
   "keywords": [],

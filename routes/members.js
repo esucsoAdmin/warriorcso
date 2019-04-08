@@ -9,7 +9,12 @@ router.get('/', (req, res) => {
   res.render('members.ejs', { title: 'Who goes there!?', error: '' });
 });
 
-router.post('/', (req, res) => {
+/* @desc GET / page. */
+router.get('/register', (req, res) => {
+  res.render('members.ejs', { title: 'Registration Form', error: '' });
+});
+
+router.post('/register', (req, res) => {
   if (req.body.pass !== req.body.confPass) {
     res.render('members.ejs', { title: 'Who goes there!?', error: 'Passwords do not match!' });
   }
@@ -20,7 +25,9 @@ router.post('/', (req, res) => {
     req.body.user &&
     req.body.pass &&
     req.body.confPass) {
-    User.findOne({ userName: req.body.user }).exec(function (err, user) {
+    User
+      .findOne({ userName: req.body.user })
+      .exec(function (err, user) {
       //if there is a user with the same username or an error occurs
       if (err || user) {
         res.render('members.ejs', { title: 'Who goes there!?', error: 'Username is already taken!' });
@@ -37,7 +44,7 @@ router.post('/', (req, res) => {
             aos: req.body.aos,
             admin: false
           }
-          User.create(userData, function (error, user) {
+          User.create(userData, (error, user) => {
             if (error) {
               res.render('members.ejs', { title: 'Who goes there!?', error: error });
             } else {
@@ -50,7 +57,8 @@ router.post('/', (req, res) => {
       }
     });
   } else {
-    res.render('members.ejs', { title: 'Who goes there!?', error: "Incomplete Form!" });
+    // TODO: Make it persist if error is encountered
+    res.render('members.ejs', { title: 'Who goes there!?', error: 'Incomplete Form!' });
   }
 });
 module.exports = router;
