@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 // Importing Item Model
-const stock = require('../models/stockItem');
+const stockItem = require('../models/stockItem');
 
 // Importing Stock Controller
-const { stockList } = require('../controllers/stockManager.js');
+// const { viewItem } = require('../controllers/stockManager.js');
 
 // FIXME: Make use of controller to handle all stock requests
 
@@ -13,15 +13,16 @@ const { stockList } = require('../controllers/stockManager.js');
 // desc    Get all Items
 // @access Public
 router.get('/admin', (req, res, next) => {
-  res.render('adminBoard.ejs', {title: 'Rendering Index', isLoggedOn: 'false'});
+  res.render('adminBoard.ejs', { title: 'Rendering Index', isLoggedOn: 'false' });
 });
 
 // @route  GET stock/viewItem
 // desc    Get an Item
 // @access Public
-router.get('/stockList', (req, res, next) => {
-  itemsList = []
-  stock.stockList();
+router.get('/getItem', (req, res) => {
+  
+  res.json({ items: itemsList });
+  // res.send('Something has been done' + itemsList );
 });
 
 // @route  GET stock/allItems
@@ -30,7 +31,7 @@ router.get('/stockList', (req, res, next) => {
 router.get('/allItems', (req, res, next) => {
   Item.find()
   .sort({totalCount: - 1 })
-  .then(items => res.render('adminBoard.ejs', {title: 'Rendering Index', isLoggedOn: 'false', itemsList: json(items)}));
+  .then(items => res.render('adminBoard.ejs', {title: 'Rendering Index', isLoggedOn: 'false', itemsList: items}));
 });
 
 
@@ -38,13 +39,26 @@ router.get('/allItems', (req, res, next) => {
 // desc    Add a new Item
 // @access Public
 router.post('/addItem', (req, res, next) => {
-  const newItem = new stockItem({
-    name: req.body.name,
-    totalCount: req.body.totalCount
-  });
-  
-  newItem.save()
-  .then(item => res.json(`Added: ${item}`));
+  Item.findOne({ name: req.body.name })
+    .then(item => {
+      if(item) {
+        return res.status(400).json({ name: 'Item Already exists' });
+      } else {
+        // Fill Item.model with given information
+        const newItem = new stockItem({
+          name: req.body.name,
+          description: req.body.description,
+          totalCount: req.body.totalCount,
+          onHand: req.body.onHand 
+        });
+
+        // Finally save Item to DB
+        newItem.save()
+        .then(item => res.json(`Added: ${item}`))
+        .catch(err => console.log(err));
+      }
+    })
+    .catch(err => console.log(err));
 });
 
 // TODO: needs testing

@@ -8,9 +8,9 @@
 */
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const ItemSchema = new Schema({
+const ItemSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -23,8 +23,8 @@ const ItemSchema = new Schema({
     type: Number,
     required: true
   },
-  description: {
-    type: Number,
+  onHand: {
+    type: Boolean,
     required: false
   }
 

@@ -12,7 +12,7 @@ const reload = require('reload');
 // Linking to routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
-const registerRouter = require('./routes/register');
+// const registerRouter = require('./routes/register');
 const aboutRouter = require('./routes/about');
 const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
@@ -49,7 +49,6 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/about', aboutRouter);
 app.use('/projects', projectsRouter);
@@ -57,6 +56,7 @@ app.use('/rent', rentRouter);
 app.use('/members', memberRouter);
 app.use('/logout', logoutRouter);
 app.use('/stock', stockRouter);
+app.use('/', indexRouter);
 
 reload(app);
 
