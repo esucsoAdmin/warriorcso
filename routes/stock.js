@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Importing Item Model
-const stockItem = require('../models/stockItem');
+const Item = require('../models/StockItem');
 
 // Importing Stock Controller
 // const { viewItem } = require('../controllers/stockManager.js');
@@ -20,9 +20,12 @@ router.get('/admin', (req, res, next) => {
 // desc    Get an Item
 // @access Public
 router.get('/getItem', (req, res) => {
-  
-  res.json({ items: itemsList });
-  // res.send('Something has been done' + itemsList );
+  const itemName = req.body.name;
+  const serialNum = req.body.serialNumber;
+  Item.find({ itemName })
+    .then(item => res.send(json(item)))
+    .catch(err => console.log(`Error: ${this.err}`));
+  // .then(items => res.render('stockAdmin.ejs', {title: 'Rendering Index', isLoggedOn: 'false', itemsList: items}));
 });
 
 // @route  GET stock/allItems
@@ -65,12 +68,13 @@ router.post('/addItem', (req, res, next) => {
 // @route  POST stock/remItem
 // desc    Delete an Item
 // @access Public
-router.delete('/remItem/:id', (req, res, next) => {
-  Item.findById(req.params.id)
-  .then(item => item.remove().then(() => res.json({ itemRemoved: true })))
-  .catch(err => console.error(err) );
+router.delete('/remItem/', (req, res, next) => {
+  const itemName = req.body.name;
+  const serialNum = req.body.serialNumber;
+  Item.findById(itemName)
+    .then(item => item.remove().then(() => res.json({ itemRemoved: true })))
+    .catch(err => console.error(err) );
 });
-
 
 module.exports = router;
 

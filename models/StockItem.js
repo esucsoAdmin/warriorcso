@@ -15,13 +15,17 @@ const ItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  serialNumber: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
     required: false
   },
-  totalCount: {
-    type: Number,
-    required: true
+  Notes: {
+    type: String,
+    required: false 
   },
   onHand: {
     type: Boolean,
