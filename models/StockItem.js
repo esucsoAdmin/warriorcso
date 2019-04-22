@@ -21,17 +21,14 @@ const ItemSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: false
   },
   Notes: {
     type: String,
-    required: false 
   },
   onHand: {
     type: Boolean,
-    required: false
   }
 
 });
 
-module.exports = Item = mongoose.model('stockItem', ItemSchema);
+module.exports = Items = mongoose.model('stockItem', ItemSchema);
