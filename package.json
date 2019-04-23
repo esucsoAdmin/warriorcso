@@ -30,6 +30,9 @@
     "reload": "^2.4.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.1.4",
     "nodemon": "^1.18.10"
   }
 }

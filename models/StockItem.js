@@ -31,4 +31,4 @@ const ItemSchema = new mongoose.Schema({
 
 });
 
-module.exports = Items = mongoose.model('stockItem', ItemSchema);
+module.exports = Item = mongoose.model('stockItem', ItemSchema);
