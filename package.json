@@ -8,7 +8,7 @@
   },
   "scripts": {
     "server": "nodemon ./bin/server",
-    "test": "mocha",
+    "test": "mocha ./test/ -w --recursive",
     "start": "node ./bin/server"
   },
   "keywords": [],
