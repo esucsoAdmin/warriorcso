@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 /*POST route for login*/
 router.post('/', (req, res) => {
-  //check if user is already logged in
+  //Check if user is already logged in
   if (req.session.user != null) {
     res.redirect('/');
   }
