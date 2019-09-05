@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   }
 });
 
-//post route for logging in
+/*POST route for login*/
 router.post('/', (req, res) => {
   //check if user is already logged in
   if (req.session.user != null) {
