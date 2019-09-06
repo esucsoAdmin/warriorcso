@@ -18,7 +18,6 @@ const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
 const memberRouter = require('./routes/members');
 const logoutRouter = require('./routes/logout');
-const stockRouter = require('./routes/stock');
 
 //mongo connect
 mongo.connect(db, { useNewUrlParser: true })
@@ -55,7 +54,6 @@ app.use('/projects', projectsRouter);
 app.use('/rent', rentRouter);
 app.use('/members', memberRouter);
 app.use('/logout', logoutRouter);
-app.use('/stock', stockRouter);
 app.use('/', indexRouter);
 
 reload(app);
