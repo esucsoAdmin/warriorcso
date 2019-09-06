@@ -15,7 +15,7 @@ const loginRouter = require('./routes/login');
 const aboutRouter = require('./routes/about');
 const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
-const memberRouter = require('./routes/members');
+const registerRouter = require('./routes/register');
 const logoutRouter = require('./routes/logout');
 
 //mongo connect
@@ -51,7 +51,7 @@ app.use('/login', loginRouter);
 app.use('/about', aboutRouter);
 app.use('/projects', projectsRouter);
 app.use('/rent', rentRouter);
-app.use('/members', memberRouter);
+app.use('/register', registerRouter);
 app.use('/logout', logoutRouter);
 app.use('/', indexRouter);
 
