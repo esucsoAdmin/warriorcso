@@ -12,7 +12,6 @@ const reload = require('reload');
 // Linking to routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
-// const registerRouter = require('./routes/register');
 const aboutRouter = require('./routes/about');
 const projectsRouter = require('./routes/projects');
 const rentRouter = require('./routes/rent');
@@ -24,6 +23,7 @@ mongo.connect(db, { useNewUrlParser: true })
 .then(() => { console.log('MongoDB connected.'); })
 .catch(err => { console.log(`MongoDB connection error: \n${err}`);
 });
+
 //init session framework
 app.use(sessions({
   key: 'user_sid',
@@ -39,15 +39,14 @@ app.use(sessions({
 // Set html framework
 app.set('view engine', 'ejs');
 
-// setup static folder directory
+// setup static folder directory and model language
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 app.use(express.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+//Spin up the routes
 app.use('/login', loginRouter);
 app.use('/about', aboutRouter);
 app.use('/projects', projectsRouter);
