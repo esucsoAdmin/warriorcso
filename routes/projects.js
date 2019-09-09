@@ -2,7 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-/* @desc GET /projects page. */
+/*
+PROJECT ROUTING:
+WORK IN PROGRESS
+*/
 router.get('/', (req, res) => {
   res.render('projects.ejs', {title : 'something to be said'});
 });

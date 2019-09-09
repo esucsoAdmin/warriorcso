@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-/* @desc GET / page. */
+/*HOME PAGE ROUTING*/
 router.get('/', (req, res) => {
   if(req.session.user!=null){
     res.render('index.ejs', {title: 'Welcome to ESU CSO (with session)', isLoggedOn: 'true'});
