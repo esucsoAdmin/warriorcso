@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-/* get home page. */
+/*ABOUT PAGE LOGIC*/
 router.get('/', (req, res) => {
   if(req.session.user!=null){
     res.render('about.ejs', {title : 'About', isLoggedOn: 'true'});

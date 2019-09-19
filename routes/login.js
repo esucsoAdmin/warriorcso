@@ -3,7 +3,15 @@ const router = express.Router();
 const User = require('../models/Member');
 const bcrypt = require('bcryptjs');
 
-/* @desc GET / page. */
+/*
+LOGIN ROUTING LOGIC
+Here, the backend system will make queries
+to the database to verify authentication
+and sign in the intended user correctly
+
+The routing software also contains a
+cookie system and redirection options
+*/
 router.get('/', (req, res) => {
   if (req.session.user != null) {
     res.redirect('/');

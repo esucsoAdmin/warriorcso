@@ -4,12 +4,15 @@ const User = require('../models/Member');
 const bcrypt = require('bcryptjs');
 var flag = false;
 
-/* @desc GET / page. */
+/*
+REGISTER PAGE:
+The registration page allows the user to create a profile
+and register a new profile.
+*/
 router.get('/', (req, res) => {
   res.render('register.ejs', { title: 'Who goes there!?', error: '' });
 });
 
-/* @desc GET / page. */
 router.get('/register', (req, res) => {
   res.render('register.ejs', { title: 'Registration Form', error: '' });
 });
